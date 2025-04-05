@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DigiNergy Animated</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <h1 data-aos="fade-down">Selamat Datang di DigiNergy</h1>
+    <p data-aos="fade-up" data-aos-delay="300">Energi digital masa depan, hari ini.</p>
+  </header>
+
+  <section class="lottie-container" data-aos="zoom-in">
+    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_jcikwtux.json"
+                   background="transparent"
+                   speed="1"
+                   style="width: 300px; height: 300px;"
+                   loop autoplay></lottie-player>
+  </section>
+
+  <section class="content">
+    <div class="parallax" data-aos="fade-right">Konten geser dari kanan</div>
+    <div data-aos="fade-left" data-aos-delay="300">Konten geser dari kiri</div>
+  </section>
+
+  <section class="scroll-section">
+    <div class="trigger-text">Ini akan muncul dengan ScrollTrigger</div>
+  </section>
+
+  <footer data-aos="fade-up" data-aos-delay="500">
+    &copy; 2025 DigiNergy
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <!-- Animation Scripts -->
+  <script>
+    AOS.init();
+
+    // GSAP basic
+    gsap.from("h1", { duration: 1, y: -100, opacity: 0 });
+
+    // ScrollTrigger Animation
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(".trigger-text", {
+      scrollTrigger: ".trigger-text",
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.out"
+    });
+
+    // Simple Parallax
+    document.addEventListener("scroll", function() {
+      const parallax = document.querySelector(".parallax");
+      let offset = window.pageYOffset;
+      if (parallax) parallax.style.transform = "translateY(" + offset * 0.3 + "px)";
+    });
+  </script>
+</body>
+</html>
